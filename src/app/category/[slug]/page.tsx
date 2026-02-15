@@ -56,8 +56,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                         gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
                         gap: "2rem"
                     }}>
-                        {products.map((product) => (
-                            // @ts-ignore
+                        {products.map((product: any) => (
                             <ProductCard key={product.id} product={product} />
                         ))}
                     </div>
