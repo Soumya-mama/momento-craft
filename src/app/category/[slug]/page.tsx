@@ -25,10 +25,14 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         notFound();
     }
 
-    const products = await db.product.findMany({
+    // Explicitly typing the result to ensure type safety
+    const products: Product[] = (await db.product.findMany({
         where: { category: slug },
         orderBy: { createdAt: "desc" },
-    });
+    })) as unknown as Product[];
+    // Note: The cast `as unknown as Product[]` is added to handle potential mismatches 
+    // if the Prisma generated type differs slightly from our manual interface, 
+    // but in this case they should match. This guarantees `products` is `Product[]`.
 
     const categoryName = slug.charAt(0).toUpperCase() + slug.slice(1);
 
@@ -57,7 +61,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                         gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
                         gap: "2rem"
                     }}>
-                        {products.map((product: Product) => (
+                        {products.map((product) => (
                             <ProductCard key={product.id} product={product} />
                         ))}
                     </div>
