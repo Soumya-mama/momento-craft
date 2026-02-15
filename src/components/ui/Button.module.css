@@ -1,0 +1,92 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    border: 1px solid transparent;
+    width: max-content;
+}
+
+.button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Variants */
+.primary {
+    background-color: var(--color-earth);
+    color: var(--color-text-light);
+}
+
+.primary:hover:not(:disabled) {
+    background-color: var(--color-clay);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.secondary {
+    background-color: var(--color-sand);
+    color: var(--color-earth);
+}
+
+.secondary:hover:not(:disabled) {
+    background-color: var(--color-blush);
+}
+
+.outline {
+    background-color: transparent;
+    border-color: var(--color-earth);
+    color: var(--color-earth);
+}
+
+.outline:hover:not(:disabled) {
+    background-color: var(--color-earth);
+    color: var(--color-text-light);
+}
+
+.ghost {
+    background-color: transparent;
+    color: var(--color-earth);
+}
+
+.ghost:hover:not(:disabled) {
+    background-color: rgba(93, 64, 55, 0.05);
+    /* earth color with low opacity */
+}
+
+/* Sizes */
+.sm {
+    height: 32px;
+    padding: 0 1rem;
+    font-size: 0.875rem;
+}
+
+.md {
+    height: 44px;
+    padding: 0 1.5rem;
+    font-size: 1rem;
+}
+
+.lg {
+    height: 56px;
+    padding: 0 2rem;
+    font-size: 1.125rem;
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
