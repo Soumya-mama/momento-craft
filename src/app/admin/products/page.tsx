@@ -1,4 +1,5 @@
 import db from "@/lib/db";
+import { Product } from "@/types";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Plus, Edit, Trash2 } from "lucide-react";
@@ -31,7 +32,7 @@ export default async function AdminProductsPage() {
                         </tr>
                     </thead>
                     <tbody>
-                        {products.map((product: any) => {
+                        {products.map((product: Product) => {
                             let image = "/placeholder.jpg";
                             try {
                                 const images = JSON.parse(product.images);

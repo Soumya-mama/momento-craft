@@ -1,4 +1,7 @@
 import db from "@/lib/db";
+import db from "@/lib/db";
+import { Order } from "@/types";
+import { Button } from "@/components/ui/Button";
 import { Button } from "@/components/ui/Button";
 
 export default async function AdminOrdersPage() {
@@ -15,7 +18,7 @@ export default async function AdminOrdersPage() {
             <h1 style={{ fontFamily: "var(--font-heading)", fontSize: "2rem", marginBottom: "2rem", color: "var(--color-earth)" }}>Orders</h1>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                {orders.map((order: any) => (
+                {orders.map((order: Order) => (
                     <div key={order.id} style={{ backgroundColor: "white", padding: "1.5rem", borderRadius: "16px", boxShadow: "var(--shadow-sm)" }}>
                         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1rem", flexWrap: "wrap", gap: "1rem" }}>
                             <div>
@@ -39,7 +42,7 @@ export default async function AdminOrdersPage() {
                         </div>
 
                         <div style={{ backgroundColor: "var(--color-cream)", padding: "1rem", borderRadius: "8px" }}>
-                            {order.items.map((item: any) => (
+                            {order.items.map((item) => (
                                 <div key={item.id} style={{ display: "flex", justifyContent: "space-between", fontSize: "0.9rem", marginBottom: "0.5rem" }}>
                                     <span>{item.quantity}x {item.product.name}</span>
                                     <span>${(item.price * item.quantity).toFixed(2)}</span>

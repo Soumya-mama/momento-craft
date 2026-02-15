@@ -1,4 +1,5 @@
 import { ProductCard } from "@/components/products/ProductCard";
+import { Product } from "@/types";
 import db from "@/lib/db";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
@@ -56,7 +57,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                         gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
                         gap: "2rem"
                     }}>
-                        {products.map((product: any) => (
+                        {products.map((product: Product) => (
                             <ProductCard key={product.id} product={product} />
                         ))}
                     </div>
